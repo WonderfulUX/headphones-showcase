@@ -1,0 +1,149 @@
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::after,
+::before {
+    position: absolute;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+button:active,
+input[type=submit]:active,
+input:focus,
+textarea:focus {
+    outline: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+input,
+textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    border: none;
+}
+
+input,
+textarea,
+button {
+    font-family: unset;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: unset;
+}
+
+input {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+
+/* STARTS HERE */
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+}
+
+.perspective-container {
+    perspective: 1000px;
+    width: 600px;
+    height: fit-content;
+}
+
+.video-container {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* border: 1px solid; */
+}
+
+.expand,
+.forward {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.expand {
+    pointer-events: none;
+    z-index: 3;
+}
+
+video {
+    width: 1200px;
+    height: auto;
+}
+
+[data-pos="1"],
+[data-pos="4"] {
+    z-index: 10;
+}
+
+[data-pos="1"] .forward,
+[data-pos="4"] .forward {
+    pointer-events: none;
+}
+
+[data-pos="1"] .expand,
+[data-pos="4"] .expand {
+    pointer-events: unset;
+}
+
+[data-pos="3"],
+[data-pos="6"] {
+    z-index: 1;
+    position: absolute;
+    translate: -1800px -1200px -2000px;
+}
+
+[data-pos="2"],
+[data-pos="5"] {
+    z-index: 5;
+    position: absolute;
+    translate: 800px -950px -1300px;
+}
