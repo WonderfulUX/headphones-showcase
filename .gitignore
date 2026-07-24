@@ -12,3 +12,5 @@ Thumbs.db
 base/
 frames/
 upscaled/
+models/
+realesrgan-ncnn-vulkan.exe
