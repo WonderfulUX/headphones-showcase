@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="./headphone-showcase.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Bruno+Ace&family=Days+One&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Audiowide&family=Bruno+Ace&family=Days+One&family=Sulphur+Point:wght@300;400;700&display=swap"
         rel="stylesheet">
 
     <title>Headphone 3D showcase in 2D space</title>
@@ -27,36 +28,39 @@
     </a>
     <h1>Showcase</h1>
     <div class="perspective-container">
-        <div class="video-container" data-pos="1">
-            <div class="video-item">
-                <div class="clockwise"></div>
-                <div class="anti-clockwise"></div>
-                <div class="expand"></div>
-                <video loop autoplay muted src="./sony-new-hq.mp4"></video>
-                <h2 class="product-name">Sony WH-1000XM6</h2>
-            </div>
-        </div>
-        <div class="video-container" data-pos="2">
-            <div class="video-item">
-                <div class="clockwise"></div>
-                <div class="anti-clockwise"></div>
-                <div class="expand"></div>
-                <video loop autoplay muted src="./beyerdynamic-hq.mp4"></video>
-                <h2 class="product-name">Beyerdynamic AVENTHO</h2>
-            </div>
-        </div>
-        <div class="video-container" data-pos="3">
-            <div class="video-item">
-                <div class="clockwise"></div>
-                <div class="anti-clockwise"></div>
-                <div class="expand"></div>
-                <video loop autoplay muted src="./hifiman-hq.mp4"></video>
-                <h2 class="product-name">Hifiman Isvarna</h2>
-            </div>
-        </div>
     </div>
 
+    <template id="product-element">
+        <div class="video-content-wrapper">
+            <div class="video-item">
+                <div class="clockwise"></div>
+                <div class="anti-clockwise"></div>
+                <div class="expand-trigger"></div>
+                <div class="showcase-container">
+                    <video width="1280" height="720" loop autoplay muted src="./sony-new-hq.mp4"></video>
+                </div>
+                <h2 class="product-name">Sony WH-1000XM6</h2>
+                <div class="details-block">
+                    <button class="close">×</button>
+                    <h3 class="product-full">
+                        <span class="slideY">Sony WH-1000XM6</span>
+                    </h3>
+                    <div class="product-description">
+                        <ul class="slideX">
+                        </ul>
+                    </div>
+                    <h4 class="product-price">
+                        <span class="slideY">$300</span>
+                    </h4>
+                    <div class="product-btn-ctn">
+                        <button class="slideY">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
 </body>
-<script src="./index.js"></script>
+<script src="./index.js" type="module"></script>
 
 </html>

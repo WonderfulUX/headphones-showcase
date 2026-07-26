@@ -1,71 +1,48 @@
+import { PRODUCTS } from "./feed.js"
+import { displayDescription, initRotationTriggers } from "./utilities.js"
 window.addEventListener('load', () => {
+    feedShowcaseBlocks()
     initRotationTriggers()
     initExpandClick()
 
 })
 
+function feedShowcaseBlocks() {
+    PRODUCTS.forEach(product => {
+        const productElement = document.getElementById('product-element').content.cloneNode(true)
+        // console.log(productElement);
 
-function initRotationTriggers() {
-    document.querySelectorAll('.clockwise').forEach(cwTrigger => {
-        cwTrigger.addEventListener('click', moveElementsClockwise)
+        productElement.querySelector('.video-content-wrapper').setAttribute('data-pos', product.position)
+        productElement.querySelector('video').src = product.videoLink
+        productElement.querySelector('.product-name').innerHTML = product.name
+        productElement.querySelector('.product-full .slideY').innerHTML = product.fullName
+        productElement.querySelector('.product-description .slideX').innerHTML =
+            `
+        <li>${product.features[0]}</li>
+        <li>${product.features[1]}</li>
+        <li>${product.features[2]}</li>
+        <li>${product.features[3]}</li>
+        <li>${product.features[4]}</li>
+        `
+        productElement.querySelector('.product-price .slideY').innerHTML = '$' + product.price
+        document.querySelector('.perspective-container').appendChild(productElement)
     })
-    document.querySelectorAll('.anti-clockwise').forEach(acwTrigger => {
-        acwTrigger.addEventListener('click', moveElementsAntiClockwise)
+    addCloseEvent()
+}
+
+function addCloseEvent() {
+    document.querySelectorAll('.close').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.target.closest('.expand').classList.remove('expand')
+        })
     })
 }
+
 
 function initExpandClick() {
-    document.querySelectorAll('.expand').forEach(expandable => {
+    document.querySelectorAll('.expand-trigger').forEach(expandable => {
         expandable.addEventListener('click', (e) => {
-            console.log('expand');
-        })
-    })
-}
-
-function moveElementsAntiClockwise(e) {
-    // console.log('anti');
-    if (document.querySelector('[data-pos="3"]')) {
-        document.querySelector('[data-pos="3"]').classList.add('ctn-antiClockwise')
-        document.querySelector('[data-pos="2"]').classList.add('ctn-antiClockwise')
-        document.querySelector('[data-pos="1"]').classList.add('ctn-antiClockwise')
-        document.querySelector('[data-pos="3"]').setAttribute('data-pos', 4)
-        document.querySelector('[data-pos="2"]').setAttribute('data-pos', 6)
-        document.querySelector('[data-pos="1"]').setAttribute('data-pos', 5)
-    }
-    else {
-        document.querySelector('[data-pos="6"]').classList.add('ctn-antiClockwise')
-        document.querySelector('[data-pos="5"]').classList.add('ctn-antiClockwise')
-        document.querySelector('[data-pos="4"]').classList.add('ctn-antiClockwise')
-        document.querySelector('[data-pos="6"]').setAttribute('data-pos', 1)
-        document.querySelector('[data-pos="5"]').setAttribute('data-pos', 3)
-        document.querySelector('[data-pos="4"]').setAttribute('data-pos', 2)
-    }
-    document.querySelectorAll('.ctn-antiClockwise').forEach(element => {
-        element.addEventListener('transitionend', () => {
-            element.classList.remove('ctn-antiClockwise')
-        })
-    })
-}
-function moveElementsClockwise() {
-    if (document.querySelector('[data-pos="2"]')) {
-        document.querySelector('[data-pos="2"]').classList.add('ctn-clockwise')
-        document.querySelector('[data-pos="3"]').classList.add('ctn-clockwise')
-        document.querySelector('[data-pos="1"]').classList.add('ctn-clockwise')
-        document.querySelector('[data-pos="2"]').setAttribute('data-pos', 4)
-        document.querySelector('[data-pos="3"]').setAttribute('data-pos', 5)
-        document.querySelector('[data-pos="1"]').setAttribute('data-pos', 6)
-    }
-    else {
-        document.querySelector('[data-pos="5"]').classList.add('ctn-clockwise')
-        document.querySelector('[data-pos="6"]').classList.add('ctn-clockwise')
-        document.querySelector('[data-pos="4"]').classList.add('ctn-clockwise')
-        document.querySelector('[data-pos="5"]').setAttribute('data-pos', 1)
-        document.querySelector('[data-pos="6"]').setAttribute('data-pos', 2)
-        document.querySelector('[data-pos="4"]').setAttribute('data-pos', 3)
-    }
-    document.querySelectorAll('.ctn-clockwise').forEach(element => {
-        element.addEventListener('transitionend', () => {
-            element.classList.remove('ctn-clockwise')
+            displayDescription(e)
         })
     })
 }
