@@ -134,9 +134,9 @@ h1 {
 .product-description,
 .product-price,
 .product-btn-ctn,
-h2 {
+.product-name {
     height: 1lh;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .product-full {
@@ -210,8 +210,8 @@ h2 {
 }
 
 .product-btn-ctn button.slideY {
-    transition: translate .8s 1s cubic-bezier(0, 1, .56, .94),
-        opacity .8s 1s cubic-bezier(0, 1, .56, .94),
+    transition: translate .8s .85s cubic-bezier(0, 1, .56, .94),
+        opacity .8s .85s cubic-bezier(0, 1, .56, .94),
         background-color .15s 0s ease-in-out,
         box-shadow .15s 0s ease-in-out;
 }
@@ -221,20 +221,20 @@ h2 {
 }
 
 .product-description .slideX {
-    transition-delay: .6s;
+    transition-delay: .55s;
 }
 
 .product-price .slideY {
-    transition-delay: .8s;
+    transition-delay: .7s;
 }
 
 
-h2,
-h3 {
+.product-name,
+.product-full {
     font-size: 28px;
 }
 
-h3,
+.product-full,
 .product-price {
     font-size: 32px;
 }
@@ -263,11 +263,27 @@ body {
     font-style: normal;
 }
 
-.perspective-container {
+.showcase-container {
     width: 100%;
     height: 100%;
-    perspective: 1000px;
     position: relative;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    transition: translate 4s var(--forefront-bezier),
+        /* z-index 0s 1s linear, */
+        transform 4s cubic-bezier(0.075, 0.82, 0.165, 1),
+        width 4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.showcase-container::before {
+    inset: 0;
+    content: '';
+    background: var(--bg);
+    z-index: -1;
+
 }
 
 .close {
@@ -284,42 +300,27 @@ body {
 }
 
 .video-item {
-    width: 500px;
+    width: 550px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: translate 1.2s linear;
-    position: relative;
-}
-
-.video-item::before {
-    content: '';
-    background-color: var(--bg);
-    display: block;
-    inset: 0;
-    z-index: -1;
-}
-
-.showcase-container {
-    width: 500px;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.video-content-wrapper {
-    width: 500px;
-    height: 100%;
+    transition: translate 4s linear;
     position: absolute;
-    align-content: center;
-    transform: translate(calc(50vw - 50%), calc(50vh - 50%));
-    transition: translate 1.2s var(--forefront-bezier),
-        z-index .4s .4s linear,
-        transform 1.2s cubic-bezier(0.075, 0.82, 0.165, 1),
-        width 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    perspective: 100px;
+    /* border: 1px solid #00F0AE; */
+}
+
+.main-window {
+    width: 550px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* border: 1px solid red; */
+    translate: -50% -50%;
+    height: 100%;
+    perspective: 1000px;
 }
 
 .expand-trigger,
@@ -346,6 +347,14 @@ video {
     height: 0;
 }
 
+.product-btn-ctn button.slideY,
+.product-full .slideY,
+.product-description .slideX,
+.product-price .slideY {
+    transition: translate .1s 0s cubic-bezier(0, 1, .56, .94),
+        opacity .1s 0s cubic-bezier(0, 1, .56, .94);
+}
+
 /* FAR AWAY */
 [data-pos="3"] video,
 [data-pos="6"] video {
@@ -355,22 +364,6 @@ video {
 [data-pos="2"] video,
 [data-pos="5"] video {
     opacity: .4;
-}
-
-/* STACKING CONTEXT ON ROTATION */
-[data-pos="1"],
-[data-pos="4"] {
-    z-index: 10;
-}
-
-[data-pos="3"],
-[data-pos="6"] {
-    z-index: 3;
-}
-
-[data-pos="2"],
-[data-pos="5"] {
-    z-index: 6;
 }
 
 /* POSITIONS */
@@ -387,46 +380,61 @@ video {
     translate: 0 0 0;
 }
 
-[data-pos="2"] .video-item,
-[data-pos="5"] .video-item {
-    translate: 70vw 0 0;
+[data-pos="2"],
+[data-pos="5"] {
+    translate: 35vw 0 0;
 }
 
-[data-pos="3"] .video-item,
-[data-pos="6"] .video-item {
-    translate: -75vw 0 0;
+[data-pos="3"],
+[data-pos="6"] {
+    translate: -30vw 0 0;
 }
 
-.video-content-wrapper[data-pos="3"],
-.video-content-wrapper[data-pos="6"] {
-    translate: 0 -20vw -100vw;
-}
-
-.video-content-wrapper[data-pos="2"],
-.video-content-wrapper[data-pos="5"] {
-    translate: 0 -12vw -80vw;
-}
 
 /* TRANSITIONS */
 
-.video-content-wrapper.ctn-clockwise[data-pos="2"],
-.video-content-wrapper.ctn-clockwise[data-pos="5"] {
-    transition: translate 1.2s var(--backwards-bezier);
+[data-pos="3"] .showcase-container,
+[data-pos="6"] .showcase-container {
+    translate: 0 0 -10vw;
+    transition: translate 4s linear;
 }
 
-.video-content-wrapper.ctn-clockwise[data-pos="3"],
-.video-content-wrapper.ctn-clockwise[data-pos="6"] {
-    transition: translate 1.2s var(--backwards-bezier);
+[data-pos="2"] .showcase-container,
+[data-pos="5"] .showcase-container {
+    translate: 0 0 -5vw;
+    transition: translate 4s var(--backwards-bezier);
 }
 
-.video-content-wrapper.ctn-antiClockwise[data-pos="2"],
-.video-content-wrapper.ctn-antiClockwise[data-pos="5"] {
-    transition: translate 1.2s var(--backwards-bezier);
+.video-item.ctn-antiClockwise[data-pos="2"] .showcase-container,
+.video-item.ctn-antiClockwise[data-pos="5"] .showcase-container {
+    transition: translate 4s linear;
 }
 
-.video-content-wrapper.ctn-antiClockwise[data-pos="3"],
-.video-content-wrapper.ctn-antiClockwise[data-pos="6"] {
-    transition: translate 1.2s var(--forefront-bezier);
+.video-item.ctn-antiClockwise[data-pos="3"] .showcase-container,
+.video-item.ctn-antiClockwise[data-pos="6"] .showcase-container {
+    transition: translate 4s var(--forefront-bezier);
+}
+
+
+
+.video-item.ctn-clockwise[data-pos="2"],
+.video-item.ctn-clockwise[data-pos="5"] {
+    transition: translate 4s linear;
+}
+
+.video-item.ctn-clockwise[data-pos="3"],
+.video-item.ctn-clockwise[data-pos="6"] {
+    transition: translate 4s var(--forefront-bezier);
+}
+
+.video-item.ctn-antiClockwise[data-pos="2"],
+.video-item.ctn-antiClockwise[data-pos="5"] {
+    transition: translate 4s var(--forefront-bezier);
+}
+
+.video-item.ctn-antiClockwise[data-pos="3"],
+.video-item.ctn-antiClockwise[data-pos="6"] {
+    transition: translate 4s linear;
 }
 
 
@@ -457,13 +465,13 @@ video {
 /* DETAILS EXPANSION*/
 .video-content-wrapper.expand {
     transform: translate(0px, 0px);
-    z-index: 15;
     width: 100%;
 }
 
-.expand h2 {
+.expand .product-name {
     height: 0;
     width: 0;
+    opacity: 0;
 }
 
 .expand .details-block {
@@ -482,6 +490,8 @@ video {
 .expand .details-block .slideX {
     translate: 0 0;
     opacity: 1;
+    transition: translate .8s cubic-bezier(0, 1, .56, .94),
+        opacity .8s cubic-bezier(0, 1, .56, .94);
 }
 
 .expand .expand-trigger {
@@ -493,10 +503,30 @@ video {
     opacity: 1;
 }
 
+.expand .product-btn-ctn button.slideY {
+    transition: translate .8s .85s cubic-bezier(0, 1, .56, .94),
+        opacity .8s .85s cubic-bezier(0, 1, .56, .94),
+        background-color .15s 0s ease-in-out,
+        box-shadow .15s 0s ease-in-out;
+}
+
+
+.expand .product-full .slideY {
+    transition-delay: .4s;
+}
+
+.expand .product-description .slideX {
+    transition-delay: .55s;
+}
+
+.expand .product-price .slideY {
+    transition-delay: .7s;
+}
+
 
 @media screen and (max-width:1200px) {
 
-    .perspective-container,
+    .showcase-container,
     .video-item {
         width: 400px;
 
@@ -506,7 +536,7 @@ video {
         max-width: 800px;
     }
 
-    h2 {
+    .product-name {
         font-size: 22px;
     }
 
@@ -523,7 +553,7 @@ video {
 
 @media screen and (max-width:1000px) {
 
-    .perspective-container,
+    .showcase-container,
     .video-item {
         width: 400px;
 
@@ -533,7 +563,7 @@ video {
         max-width: 600px;
     }
 
-    h2 {
+    .product-name {
         font-size: 18px;
     }
 

@@ -31,7 +31,8 @@ export const PRODUCTS = [
         name: 'Hifiman Isvarna',
         fullName: 'Hifiman Isvarna closed-back<br>planar magnetic headphones',
         position: 3,
-        videoLink: './hifiman-hq.mp4',
+        // videoLink: './hifiman-hq.mp4',
+        videoLink: './beyerdynamic-hq.mp4',
         features: [
             "Innovative Hybrid Driver System",
             "Closed-Back Design",

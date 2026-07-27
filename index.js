@@ -12,7 +12,8 @@ function feedShowcaseBlocks() {
         const productElement = document.getElementById('product-element').content.cloneNode(true)
         // console.log(productElement);
 
-        productElement.querySelector('.video-content-wrapper').setAttribute('data-pos', product.position)
+        // productElement.querySelector('.video-content-wrapper').setAttribute('data-pos', product.position)
+        productElement.querySelector('.video-item').setAttribute('data-pos', product.position)
         productElement.querySelector('video').src = product.videoLink
         productElement.querySelector('.product-name').innerHTML = product.name
         productElement.querySelector('.product-full .slideY').innerHTML = product.fullName
@@ -25,7 +26,7 @@ function feedShowcaseBlocks() {
         <li>${product.features[4]}</li>
         `
         productElement.querySelector('.product-price .slideY').innerHTML = '$' + product.price
-        document.querySelector('.perspective-container').appendChild(productElement)
+        document.querySelector('.main-window').appendChild(productElement)
     })
     addCloseEvent()
 }
