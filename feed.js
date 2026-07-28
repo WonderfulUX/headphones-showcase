@@ -3,7 +3,7 @@ export const PRODUCTS = [
         name: 'Sony WH-1000XM6',
         fullName: 'Sony WH-1000XM6<br>noise-canceling headphones',
         position: 1,
-        videoLink: './sony-new.mp4',
+        videoLink: './assets/videos/sony-new.mp4',
         features: [
             "The Best Noise Cancellation",
             "Authenticity, in every note",
@@ -17,7 +17,7 @@ export const PRODUCTS = [
         name: 'Beyerdynamic AVENTO',
         fullName: 'Beyerdynamic AVENTO 300<br>Over-Ear Headphones',
         position: 2,
-        videoLink: './beyerdynamic-new.mp4',
+        videoLink: './assets/videos/beyerdynamic-new.mp4',
         features: [
             "Legendary STELLAR.45 Sound",
             "Dolby Atmos Spatial Audio",
@@ -31,8 +31,7 @@ export const PRODUCTS = [
         name: 'Hifiman Isvarna',
         fullName: 'Hifiman Isvarna closed-back<br>planar magnetic headphones',
         position: 3,
-        // videoLink: './hifiman-hq.mp4',
-        videoLink: './hifiman-new.mp4',
+        videoLink: './assets/videos/hifiman-new.mp4',
         features: [
             "Innovative Hybrid Driver System",
             "Closed-Back Design",
