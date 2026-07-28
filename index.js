@@ -26,7 +26,7 @@ function feedShowcaseBlocks() {
         <li>${product.features[4]}</li>
         `
         productElement.querySelector('.product-price .slideY').innerHTML = '$' + product.price
-        document.querySelector('.main-window').appendChild(productElement)
+        document.querySelector('.showcase-container').appendChild(productElement)
     })
     addCloseEvent()
 }
