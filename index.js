@@ -13,7 +13,7 @@ function feedShowcaseBlocks() {
         // console.log(productElement);
 
         // productElement.querySelector('.video-content-wrapper').setAttribute('data-pos', product.position)
-        productElement.querySelector('.video-item').setAttribute('data-pos', product.position)
+        productElement.querySelector('.video-frame').setAttribute('data-pos', product.position)
         productElement.querySelector('video').src = product.videoLink
         productElement.querySelector('.product-name').innerHTML = product.name
         productElement.querySelector('.product-full .slideY').innerHTML = product.fullName

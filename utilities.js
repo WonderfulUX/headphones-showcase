@@ -57,6 +57,6 @@ export function moveElementsClockwise() {
 }
 
 export function displayDescription(e) {
-    e.target.closest('.video-item').classList.toggle('expand')
+    e.target.closest('.video-frame').classList.toggle('expand')
 
 }

@@ -19,11 +19,11 @@ export const PRODUCTS = [
         position: 2,
         videoLink: './beyerdynamic-new.mp4',
         features: [
-            "Legendary beyerdynamic sound with German-made STELLAR.45 drivers",
-            "Spatial Audio thanks to Dolby Atmos with Dolby Head Tracking™ technology",
-            "Multipoint Bluetooth® 5.4, adaptive noise cancelling, transparency mode and automatic play/pause function when taking the headphones off or putting them back on",
-            "Ergonomic earcups and premium materials for exceptional comfort",
-            "Up to 50 hours battery life (ANC on)"
+            "Legendary STELLAR.45 Sound",
+            "Dolby Atmos Spatial Audio",
+            "Adaptive Noise Cancelling",
+            "Premium Comfort",
+            "Up to 50 Hours Battery Life"
         ],
         price: 399.99
     },
