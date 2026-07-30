@@ -313,7 +313,7 @@ body {
 
 .video-frame {
     position: absolute;
-    width: 550px;
+    width: 500px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -444,7 +444,7 @@ video {
 .ctn-clockwise[data-pos="5"],
 .ctn-antiClockwise[data-pos="3"],
 .ctn-antiClockwise[data-pos="6"] {
-    z-index: 4;
+    z-index: -1;
 }
 
 .ctn-clockwise[data-pos="3"],
