@@ -11,7 +11,10 @@
         href="https://fonts.googleapis.com/css2?family=Audiowide&family=Bruno+Ace&family=Days+One&family=Sulphur+Point:wght@300;400;700&display=swap"
         rel="stylesheet">
 
-    <title>Headphone 3D showcase in 2D space</title>
+    <title>Modern interactive product showcase featuring 3 products rendered in a 2D environment while simulating
+        realistic 3D rotation without requiring WebGL or 3D models. It demonstrates how high-quality product
+        presentations can be built using standard web technologies, combining video, CSS perspective property for an
+        immersive experience.</title>
 </head>
 
 <body>
@@ -29,6 +32,10 @@
     <h1>Showcase</h1>
     <div class="showcase-container">
     </div>
+    <div class="animation-btn-ctn">
+        <button class="rotation-btn">Previous</button>
+        <button class="rotation-btn">Next</button>
+    </div>
 
     <template id="product-element">
         <div class="video-frame">
@@ -38,15 +45,13 @@
                 <div class="expand-trigger"></div>
                 <div class="video-container">
                     <video width="720" height="1280" loop autoplay muted></video>
+                    <h2 class="product-name"></h2>
                 </div>
-                <h2 class="product-name"></h2>
                 <div class="details-block">
                     <button class="close">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8 8L32 32M8 32L32 8" />
                         </svg>
-
-
                     </button>
                     <h3 class="product-full">
                         <span class="slideY"></span>
@@ -62,8 +67,6 @@
                         <button class="slideY">Add to cart</button>
                     </div>
                 </div>
-                <!-- <div class="showcase-container">
-                </div> -->
             </div>
         </div>
     </template>

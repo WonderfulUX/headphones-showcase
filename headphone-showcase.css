@@ -75,14 +75,14 @@ input {
 /* INIT */
 :root {
     --text: #111;
-    --bg: #F0F0F0;
+    --bg: #F1F1F1;
     --highlight-color: #00F0AE;
     --wux-bezier: cubic-bezier(.72, 0, .28, .99);
     --expand-bezier: cubic-bezier(0.075, 0.82, 0.165, 1);
     --slide-bezier: cubic-bezier(0, 1, .56, .94);
     --forefront-bezier: cubic-bezier(.01, 1.37, .72, 1.33);
     --backwards-bezier: cubic-bezier(.72, -0.66, 1, -0.01);
-    --rotation-timing-value: 1.4;
+    --rotation-timing-value: 1.6;
     --rotation-timing: calc(var(--rotation-timing-value) * 1s);
     --slide-timing: calc(var(--rotation-timing-value) * .6s);
     --slide-timing-delay: calc(var(--rotation-timing-value) * .5s);
@@ -143,6 +143,29 @@ h1 {
     right: 10px;
 }
 
+.animation-btn-ctn {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    z-index: 50;
+    left: 50%;
+    width: 50%;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    translate: -50% 0;
+    border-radius: 30px 30px 0 0;
+    overflow: hidden;
+    transition: translate var(--slide-timing) ease-in-out;
+}
+
+.rotation-btn {
+    line-height: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    background: var(--highlight-color);
+}
+
 .product-full,
 .product-description,
 .product-price,
@@ -158,7 +181,7 @@ h1 {
     position: absolute;
     bottom: 0;
     left: 50%;
-    translate: -50% 0;
+    translate: -50% 100%;
     width: 100%;
     text-align: center;
 }
@@ -313,7 +336,6 @@ body {
 
 .video-frame {
     position: absolute;
-    width: 500px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -329,7 +351,7 @@ body {
 
 .video-item {
     gap: 0;
-    height: 85vh;
+    height: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -340,15 +362,41 @@ body {
 }
 
 .video-container {
-    width: 500px;
-    height: 700px;
+    aspect-ratio: 8/12;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; */
     flex-shrink: 0;
+    position: relative;
 }
 
+.video-frame,
+.video-container {
+    width: 450px;
+}
+
+.video-container::before,
+.video-container::after {
+    content: '';
+    background: var(--bg);
+    display: block;
+}
+
+.video-container::before {
+    height: 100%;
+    width: 4px;
+    right: 0;
+    translate: 50% 0;
+}
+
+.video-container::after {
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    translate: 0 50%;
+}
 
 .expand-trigger,
 .clockwise,
@@ -363,6 +411,7 @@ body {
 video {
     width: 100%;
     height: 100%;
+    object-fit: cover;
     pointer-events: none;
 }
 
@@ -551,6 +600,14 @@ video {
 }
 
 
+@media screen and (min-width:1550px) {
+
+    .video-frame,
+    .video-container {
+        width: 550px;
+    }
+}
+
 @media screen and (max-width:1200px) {
 
     [data-pos="2"] .video-item,
@@ -565,48 +622,46 @@ video {
         transform: translate3d(0, 0, -140vw);
     }
 
-    video {
-        height: 80vh;
+    .video-item {
+        height: 90%;
     }
 
-    .product-name {
+    /* .product-name {
         translate: -50% -100%;
+    } */
+    /* .video-frame,
+    .video-container {
+        width: 480px;
     }
+} */
 }
 
-/* @media screen and (max-width:1000px) {
-
-    .showcase-container,
-    .video-item {
-        width: 400px;
-
-    }
-
-    video {
-        max-width: 600px;
-    }
-
-    .product-name {
-        font-size: 18px;
-    }
-
-    .video-content-wrapper[data-pos="2"],
-    .video-content-wrapper[data-pos="5"] {
-        translate: 0 -24vw -80vw;
-    }
-
-    .video-content-wrapper[data-pos="3"],
-    .video-content-wrapper[data-pos="6"] {
-        translate: 0 -36vw -100vw;
-    }
+@media screen and (max-width:1024px) {
 
     [data-pos="3"] .video-item,
     [data-pos="6"] .video-item {
-        translate: -65vw 0 0;
+        translate: -110vw 0 0;
+        transform: translate3d(0, 0, -220vw);
     }
 
     [data-pos="2"] .video-item,
     [data-pos="5"] .video-item {
-        translate: 62vw 0 0;
+        translate: 90vw 0 0;
+        transform: translate3d(0, 0, -160vw);
     }
-} */
+
+    .video-frame,
+    .video-container {
+        width: 450px;
+    }
+
+    .product-name {
+        translate: -50% -200%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .animation-btn-ctn {
+        display: grid;
+    }
+}
