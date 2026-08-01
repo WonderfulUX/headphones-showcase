@@ -799,6 +799,10 @@ video {
 }
 
 @media screen and (max-width:650px) {
+    :root {
+        --rotation-timing-value: 1;
+    }
+
     .animation-btn-ctn {
         display: grid;
     }
@@ -843,6 +847,7 @@ video {
     .details-block,
     .expand .details-block {
         grid-template-columns: 1fr;
+        gap: 10px;
         grid-template-rows: repeat(2, auto) 130px repeat(2, auto);
         grid-template-areas: "close"
             "name"
