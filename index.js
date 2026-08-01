@@ -1,5 +1,5 @@
 import { PRODUCTS } from "./feed.js"
-import { displayDescription, initRotationTriggers } from "./utilities.js"
+import { displayDescription, initRotationTriggers, moveElementsClockwise } from "./utilities.js"
 window.addEventListener('load', () => {
     feedShowcaseBlocks()
     initRotationTriggers()
@@ -35,6 +35,8 @@ function addCloseEvent() {
     document.querySelectorAll('.close').forEach(button => {
         button.addEventListener('click', (e) => {
             e.target.closest('.expand').classList.remove('expand')
+            document.querySelector('.animation-btn-ctn') && document.querySelector('.animation-btn-ctn').classList.remove('slideY')
+
         })
     })
 }
@@ -47,3 +49,12 @@ function initExpandClick() {
         })
     })
 }
+
+if (window.matchMedia("(max-width: 650px)").matches) {
+    document.querySelector(".next").addEventListener('click', () => {
+        moveElementsClockwise()
+    })
+    document.querySelector(".prev").addEventListener('click', () => {
+        moveElementsClockwise()
+    })
+} 

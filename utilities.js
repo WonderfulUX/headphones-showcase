@@ -58,5 +58,6 @@ export function moveElementsClockwise() {
 
 export function displayDescription(e) {
     e.target.closest('.video-frame').classList.toggle('expand')
+    document.querySelector('.animation-btn-ctn') && document.querySelector('.animation-btn-ctn').classList.add('slideY')
 
 }
