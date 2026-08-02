@@ -1,5 +1,5 @@
 import { PRODUCTS } from "./feed.js"
-import { displayDescription, initRotationTriggers, moveElementsClockwise } from "./utilities.js"
+import { displayDescription, initRotationTriggers, moveElementsAntiClockwise, moveElementsClockwise } from "./utilities.js"
 window.addEventListener('load', () => {
     feedShowcaseBlocks()
     initRotationTriggers()
@@ -55,6 +55,6 @@ if (window.matchMedia("(max-width: 650px)").matches) {
         moveElementsClockwise()
     })
     document.querySelector(".prev").addEventListener('click', () => {
-        moveElementsClockwise()
+        moveElementsAntiClockwise()
     })
 } 
